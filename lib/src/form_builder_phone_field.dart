@@ -112,6 +112,8 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
   ///Widget to build list view item inside dialog
   final ItemBuilder? itemBuilder;
 
+  final InputDecoration decoration;
+
   /// Set a custom widget in left side of flag, (country selector)
   ///
   /// By default this widget is `const Icon(Icons.arrow_drop_down)`
@@ -132,7 +134,6 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
     required super.name,
     super.validator,
     super.initialValue,
-    super.decoration,
     super.onChanged,
     super.valueTransformer,
     super.enabled,
@@ -140,6 +141,7 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
     AutovalidateMode super.autovalidateMode = AutovalidateMode.disabled,
     super.onReset,
     super.focusNode,
+    this.decoration = const InputDecoration(),
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
     this.scrollPadding = const EdgeInsets.all(20.0),
@@ -200,7 +202,7 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
             final state = field as _FormBuilderPhoneFieldState;
 
             return InputDecorator(
-              decoration: state.decoration,
+              decoration: decoration,
               child: Row(
                 children: <Widget>[
                   GestureDetector(
